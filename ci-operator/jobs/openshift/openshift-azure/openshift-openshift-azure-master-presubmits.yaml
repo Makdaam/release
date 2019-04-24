@@ -195,6 +195,26 @@ presubmits:
     - master
     context: ""
     decorate: true
+    name: e2e-syncpod
+    rerun_command: ""
+    spec:
+      containers:
+      - args:
+        - hack/tests/e2e-create.sh
+        env:
+        - name: FOCUS
+          value: sync pod tests \[Fake\]
+        image: registry.svc.ci.openshift.org/azure/ci-base:latest
+        name: ""
+        resources: {}
+      serviceAccountName: ci-operator
+    trigger: ""
+  - agent: ""
+    always_run: false
+    branches:
+    - master
+    context: ""
+    decorate: true
     name: e2e-scaleupdown
     rerun_command: ""
     spec:
